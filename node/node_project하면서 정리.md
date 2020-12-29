@@ -1,5 +1,9 @@
 # 1.sequelize
 
+npm install sequelize-cli sequelize mysql2
+
+sequelize init
+
 ## (1)M:N
 
 Users와 Organizations table이 M:N관계이다.
@@ -388,30 +392,36 @@ sequeluze에서 받아온 인스턴스객체에 추가적인 요소를 넣고싶
 
 1.git clone "git url"
 
-```
-"status":"200",
-"message":"유사 서비스 가져오기 성공"
-"data" :[{
-	"id":"serviceId(number)",
-	"title":"서비스제목(string)",
-	"star":"별점(number)",
-	"price":"서비스 가격(number)",
-	"image":"메인 이미지(string)",
-	"review":"리뷰갯수(number)"
-},{"..."},{"..."}]
+## git push가 안될때
 
-"star":"별점(number)",
-	"review":"리뷰갯수(number)",
-	"heart":"좋아요 갯수(number)",
-	"price":"가격(number)",
-	"layer":"서비스 카테고리 순서?(string)",
-	"ServiceImgs:"[{
-		"id":"serviceId(number)",
-		"img":"서비스 디테일 이미지(string)",
-	},{"..."},{"..."}]
-```
+push를 했을때 밑의 메시지가 뜨는데
 
 ```
-['id', 'title', 'image', 'star', 'review', 'price'
+To https://github.com/userId/userProject.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/userId/userProject.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
+push전에 먼저 pull을 해서 프로젝트를 병합해 줘야한다.
+
+```
+refusing to merge unrelated histories
+```
+
+pull을 하면 이런 메시지와함꼐 실행이 되지않는다면
+
+```
+git pull origin 브런치명 --allow-unrelated-histories
+```
+
+로 git에서 서로 관련 기록이 없는 이질적인 두 프로젝트를 병합할때 거부하는것을 허용해준다.
+
+# 6.S3
+
+npm install multer
+
+npm install multer-s3 aws-sdk
